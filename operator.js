@@ -68,7 +68,7 @@ console.log(1 - 1); // substract
 console.log(1 / 1); // divide
 console.log(1 * 1); // multiply
 console.log(5 % 2); // remainder
-console.log(2 ** 3); // exponentiation
+console.log(2 ** 3); // exponentiation : 몇승..
 
 // 3. Increment and decrement operators
 let counter = 2;
