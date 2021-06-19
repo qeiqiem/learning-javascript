@@ -73,6 +73,13 @@ fruit.pop();
 console.log(fruit);
 // ["apple", "banana", "kiwi", "cherry"]
 
+// pop & push
+
+// *********************
+// pop과 push는 리턴값이 있다.
+// const res = fruit.pop()
+// 으로 값을 받아올 수도 있다.
+
 // 앞에서부터 데이터 조작
 
 //add
