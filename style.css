@@ -7,6 +7,7 @@
   --color-pink: #fd7f84;
   --color-light-grey: #dfdfdf;
 
+  /* 사이즈도 변수로 지정해서 적용이 가능하다!...몰랐엔..ㅠ */
   /* size */
   --base-space: 8px;
   --size-button: 60px;
@@ -30,10 +31,11 @@ body {
 .logo {
   cursor: pointer;
   transition: transform var(--animation-duration) ease;
+  /* 트랜지션을 logo에 넣어야 움직임을 준다. */
 }
 
 .btn {
-  background-color: transparent;
+  background-color: transparent; /*백그라운드 투명*/
   border: none;
   outline: none;
   cursor: pointer;
@@ -44,11 +46,14 @@ body {
 .btn:hover,
 .logo:hover {
   transform: scale(1.1);
+  /* 변화 스케일크기 적용 */
 }
 
+/* 버튼들이 담겨있는 컨테이너 section 추가됨 */
 .buttons {
   display: flex;
   align-items: center;
+  /* 수직에서 가운데정렬 */
 }
 
 .imgBtn {
@@ -58,6 +63,7 @@ body {
 
 .colorBtn {
   font-size: var(--font-size);
+  /* 베이스보다 2배 크도록 만들기. calc라는 함수 */
   padding: calc(var(--base-space) * 2);
   border-radius: var(--size-border);
 }
@@ -74,11 +80,16 @@ body {
   background-color: var(--color-pink);
 }
 
+/* 아이템 리스트를 담고 있는 전체틀 */
 .items {
+  /* 크기 규격을 맞춰준다. */
   width: 60%;
   height: 60%;
+
   list-style: none;
   padding-left: 0;
+
+  /* 페이지 전체가 아닌, items 규격안에서 스크롤이 발생하도록 */
   overflow-y: scroll;
 }
 
