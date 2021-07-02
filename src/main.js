@@ -1,3 +1,4 @@
+"use strict";
 // json.. js object notation
 // object안에는 모든 정보를 담고 있어야 함.
 // 그래서 타입~이미지까지 전부 json object에 정의헤서 담는다.
@@ -39,6 +40,37 @@ function createHTMLString(item) {
     `;
 }
 
+function setEventListeners(items) {
+  const logo = document.querySelector(".logo");
+  const buttons = document.querySelector(".buttons"); // 컨테이너 자체에 이벤트 리스너 등록 => 이벤트 위임
+  // 한곳에서만 핸들링 할 수 있도록 이벤트 위임을 한다.
+  logo.addEventListener("click", () => displayItems(items));
+  buttons.addEventListener("click", (event) => onButtonClick(event, items));
+}
+
+// 이벤트를 처리하는 함수는 on~ 형식으로 이름을 짓는다.
+function onButtonClick(event, items) {
+  const dataset = event.target.dataset;
+  const key = dataset.key;
+  const value = dataset.value;
+  console.log(event.target.dataset.key);
+  console.log(event.target.dataset.value);
+
+  if (key == null || value == null) {
+    return;
+  }
+
+  // 해당 키,밸류만 보여줄 수 있도록
+  // 오브젝트 : 배열처럼 키를 이용해 데이터에 접근 가능!
+
+  // item이라는 oject에 object={key:value} 형태로 있고,
+  // 그 key값이 value(dataset.value) 즉, t/skirt/pants 중 하나랑 같다면 필터링해라.
+  // array의 filter로 리스팅해주는 것.
+  // 버튼의 키, 밸류는 하나의 값을 담고 있고 그걸 아이템[키]랑 매칭하면 해당 항목이 리스팅되게 된다.
+
+  displayItems(items.filter((item) => item[key] === value));
+}
+
 // main
 // 아이템들를 동적으로 받아서 프로미스가 리턴
 // -> 프로미스가 성공
@@ -48,7 +80,7 @@ loadItems()
     // console.log(items);
     // 아이템스 배열자체만 출력됨
 
-    displayItems(items); //아이템디스플레이
-    // setEventListeners(items); //필터링
+    displayItems(items); // all 아이템디스플레이
+    setEventListeners(items); // onClick 필터링
   })
   .catch(console.log);
